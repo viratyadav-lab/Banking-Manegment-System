@@ -1,0 +1,19 @@
+Compiled executable
+
+banking
+
+Object files
+
+*.o
+
+Debug files
+
+*.dSYM/
+
+VS Code workspace settings
+
+.vscode/
+
+macOS system files
+
+.DS_Store
