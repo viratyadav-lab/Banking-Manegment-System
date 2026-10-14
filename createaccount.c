@@ -85,6 +85,7 @@ int main()
             printf("Invalid input! Please enter a number between 1 and 8.\n");
         }
     }
+    return 0;
 }
 void createaccount(double *y, char st[], int *x)
 {
@@ -184,8 +185,6 @@ double withdrawmoney(double x)
 
     x = x - y;
     printf("Withdrawal successful!\n");
-
-    return x;
     if (transactionCount >= 100)
     {
         printf("Transaction history is full.\n");
@@ -231,7 +230,7 @@ void transactionhistory(void)
 
         return;
     }
-    printf("Transaction History");
+    printf("Transaction History\n");
     for (i = 0; i < transactionCount; i++)
     {
         if (transactionType[i] == 1)
