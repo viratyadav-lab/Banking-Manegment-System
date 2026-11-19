@@ -6,8 +6,8 @@ double withdrawmoney(double x);
 void checkbalance(double x);
 void updateaccountdetails(char st[]);
 void transactionhistory(void);
-double transactions[100];
-int transactionType[100];
+double transactions[10000];
+int transactionType[10000];
 int transactionCount = 0;
 int accountCreated = 0;
 
@@ -16,7 +16,6 @@ int main()
     double balance = 0.0;
     double *a = &balance;
     char st[20];
-    char *p = st;
     int z = 0;
     int *pt = &z;
 
@@ -49,25 +48,23 @@ int main()
         case 1:
             if (accountCreated == 1)
             {
-                printf("An account has already been created.\n");
+                printf("An account has already been created\n");
             }
             else
             {
                 createaccount(a, st, pt);
             }
             break;
-
-            break;
         case 2:
             displayaccountdetails(*a, st, *pt);
             break;
         case 3:
             *a = depositmoney(*a);
-            printf("New Balance : %lf\n", *a);
+            printf("New Balance: %lf\n", *a);
             break;
         case 4:
             *a = withdrawmoney(*a);
-            printf("Remaining Balance :%lf\n", *a);
+            printf("Remaining Balance: %lf\n", *a);
             break;
         case 5:
             checkbalance(*a);
@@ -79,10 +76,11 @@ int main()
             transactionhistory();
             break;
         case 8:
-            printf("Thank you for using our banking system!\n");
+            printf("Thank you for using our banking system\n");
             return 0;
         default:
-            printf("Invalid input! Please enter a number between 1 and 8.\n");
+            printf("Invalid input\n");
+            printf("Please enter a number between 1 and 8\n");
         }
     }
     return 0;
@@ -96,11 +94,11 @@ void createaccount(double *y, char st[], int *x)
         {
             // Consume remaining characters
         }
-        printf("PLEASE ENETR THE NAME OF THE ACCOUNT HOLDER");
+        printf("Please Enter The Name Of The Account Holder: ");
         fgets(st, 20, stdin);
-        printf("PLEASE ENTER YOUR ACCOUNT NUMBER ");
+        printf("Please Enter Your Account Number: ");
         scanf("%d", x);
-        printf("Account created successfully!\n");
+        printf("Account created successfully\n");
         printf("Account Holder name = %s\n", st);
         printf("Account Number = %d\n", *x);
         printf("Account Balance = %lf\n", *y);
@@ -110,7 +108,7 @@ void createaccount(double *y, char st[], int *x)
 
     {
 
-        printf("An account has already been created.\n");
+        printf("An account has already been created\n");
     }
 }
 
@@ -118,22 +116,23 @@ void displayaccountdetails(double x, char st[], int z)
 {
     if (accountCreated == 0)
     {
-        printf("Please create an account first.\n");
+        printf("Please create an account first\n");
+        return;
     }
-    printf("account holder name %s\n", st);
-    printf("account number %d\n", z);
-    printf("current balance :%2f\n", x);
+    printf("account holder name: %s\n", st);
+    printf("account number: %d\n", z);
+    printf("current balance: %.2f\n", x);
 }
 double depositmoney(double x)
 {
     if (accountCreated == 0)
     {
-        printf("Please create an account first.\n");
+        printf("Please create an account first\n");
         return x;
     }
     double y;
     printf("Current Balance = %lf\n", x);
-    printf("Enter The Amount You Want To Deposit");
+    printf("Enter The Amount You Want To Deposit: ");
     scanf("%lf", &y);
     if (y <= 0)
     {
@@ -143,9 +142,9 @@ double depositmoney(double x)
     x = x + y;
     printf("Deposited : %lf\n", y);
     printf("Deposit Successful!\n");
-    if (transactionCount >= 100)
+    if (transactionCount >= 10000)
     {
-        printf("Transaction history is full.\n");
+        printf("Transaction history is full\n");
     }
     else
     {
@@ -159,7 +158,7 @@ double withdrawmoney(double x)
 {
     if (accountCreated == 0)
     {
-        printf("Please create an account first.\n");
+        printf("Please create an account first\n");
         return x;
     }
     double y;
@@ -167,27 +166,28 @@ double withdrawmoney(double x)
     printf("Enter the withdrawal amount: ");
     if (scanf("%lf", &y) != 1)
     {
-        printf("\nInvalid input. Please enter a number.\n");
+        printf("\nInvalid input\n");
+        printf("\nPlease enter a number\n");
         return x;
     }
 
     if (y <= 0)
     {
-        printf("Invalid amount.\n");
+        printf("Invalid amount\n");
         return x;
     }
 
     if (y > x)
     {
-        printf("Insufficient balance.\n");
+        printf("Insufficient balance\n");
         return x;
     }
 
     x = x - y;
-    printf("Withdrawal successful!\n");
-    if (transactionCount >= 100)
+    printf("Withdrawal successful\n");
+    if (transactionCount >= 10000)
     {
-        printf("Transaction history is full.\n");
+        printf("Transaction history is full\n");
     }
     else
     {
@@ -201,9 +201,10 @@ void checkbalance(double x)
 {
     if (accountCreated == 0)
     {
-        printf("Please create an account first.\n");
+        printf("Please create an account first\n");
+        return;
     }
-    printf("Current Balance :%lf\n", x);
+    printf("Current Balance : %lf\n", x);
 }
 void updateaccountdetails(char st[])
 {
@@ -219,14 +220,14 @@ void transactionhistory(void)
 {
     if (accountCreated == 0)
     {
-        printf("Please create an account first.\n");
+        printf("Please create an account first\n");
     }
     int i;
     if (transactionCount == 0)
 
     {
 
-        printf("No transactions yet.\n");
+        printf("No transactions yet\n");
 
         return;
     }
